@@ -14,6 +14,13 @@ namespace BlankAIO.Champions
         private static Spell Q, W, E, R;
 
         private static Menu LeonaMenu;
+        private static AIHeroClient Player;
+
+        public static void Load()
+        {
+            GameEvent.OnGameLoad += OnLoad;
+            LeonaMenu = new Menu("BlankAIO", "BlankAIO - Leona", true);
+        }
 
         public static void OnLoad()
         {
@@ -24,15 +31,37 @@ namespace BlankAIO.Champions
 
             E.SetSkillshot(0.25f, 100f, 2000f, false, false, EnsoulSharp.SDK.Prediction.SkillshotType.Line);
             R.SetSkillshot(1f, 300f, float.MaxValue, false, false, EnsoulSharp.SDK.Prediction.SkillshotType.Circle);
+
+            var comboMenu = new Menu("Combo", "Combo Settings");
+
+            comboMenu.Add(new MenuBool("ComboE", "Use E without Q", false));
+            comboMenu.Add(new MenuBool("ComboQWE", "Use Q/W/E", true));
+            comboMenu.Add(new MenuBool("ComboR", "Use R"));
+
+            LeonaMenu.Add(comboMenu);
+
+            var interruptMenu = new Menu("Interrupt", "Interrupt Settings");
+            interruptMenu.Add(new MenuBool("GapcloserQ", "Use Q to Interrupt Gapcloser", true));
+            interruptMenu.Add(new MenuBool("InterruptQ", "Use Q to Interrupt Spells", true));
+            interruptMenu.Add(new MenuBool("InterruptR", "Use R to Interrupt Spells", true));
+
+            LeonaMenu.Add(interruptMenu);
+
+            LeonaMenu.Attach();
+
+            Game.OnTick += Game_OnUpdate;
         }
 
         static void Game_OnUpdate(EventArgs args)
         {
-            switch (Orbwalker.ActiveMode)
+            if (Player != null)
             {
-                case OrbwalkerMode.Combo:
-                    Combo();
-                    break;
+                switch (Orbwalker.ActiveMode)
+                {
+                    case OrbwalkerMode.Combo:
+                        Combo();
+                        break;
+                }
             }
         }
 
@@ -158,27 +187,6 @@ namespace BlankAIO.Champions
                     R.Cast(target);
                 }
             }
-        }
-
-        static void ComboMenu(Menu config)
-        {
-            var comboMenu = new Menu("Combo", "Combo Settings");
-
-            comboMenu.Add(new MenuBool("ComboE", "Use E without Q", false));
-            comboMenu.Add(new MenuBool("ComboQWE", "Use Q/W/E", true));
-            comboMenu.Add(new MenuBool("ComboR", "Use R"));
-
-            LeonaMenu.Add(comboMenu);
-        }
-
-        static void InterruptMenu(Menu config)
-        {
-            var interruptMenu = new Menu("Interrupt", "Interrupt Settings");
-            interruptMenu.Add(new MenuBool("GapcloserQ", "Use Q to Interrupt Gapcloser", true));
-            interruptMenu.Add(new MenuBool("InterruptQ", "Use Q to Interrupt Spells", true));
-            interruptMenu.Add(new MenuBool("InterruptR", "Use R to Interrupt Spells", true));
-
-            LeonaMenu.Add(interruptMenu);
         }
     }
 }
