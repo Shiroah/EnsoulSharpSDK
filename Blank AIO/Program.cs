@@ -1,13 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using EnsoulSharp;
 using EnsoulSharp.SDK;
-using EnsoulSharp.SDK.MenuUI;
-using SharpDX;
 using BlankAIO.Champions;
 
 namespace BlankAIO
@@ -15,7 +9,6 @@ namespace BlankAIO
     internal class Program
     {
         public static AIHeroClient player;
-        public static string version = Assembly.GetExecutingAssembly().GetName().Version.ToString();
 
         private static void Main(string[] args)
         {
@@ -27,13 +20,17 @@ namespace BlankAIO
             try
             {
                 player = ObjectManager.Player;
-                if (player.CharacterName=="Leona")
+                switch (player.CharacterName)
                 {
-                    Leona.OnLoad();
-                }
-                else if (player.CharacterName=="Pyke")
-                {
-                    Pyke.OnLoad();
+                    case "Twitch":
+                        Twitch.Load();
+                        break;
+                    case "Leona":
+                        Leona.Load();
+                        break;
+                    case "Pyke":
+                        Pyke.Load();
+                        break;                   
                 }
             }
             catch (Exception e)
