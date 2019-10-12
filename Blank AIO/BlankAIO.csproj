@@ -39,8 +39,9 @@
     <Reference Include="EnsoulSharp.SDK">
       <HintPath>C:\Users\Shiro\Downloads\EnsoulSharp\System\EnsoulSharp.SDK.dll</HintPath>
     </Reference>
-    <Reference Include="EnsoulSharp.Wrapper">
-      <HintPath>C:\Users\Shiro\Downloads\EnsoulSharp\System\EnsoulSharp.Wrapper.dll</HintPath>
+    <Reference Include="EnsoulSharp.Wrapper, Version=1.0.0.19, Culture=neutral, PublicKeyToken=a47cf8ceb3524cd7, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Downloads\EnsoulSharp\System\EnsoulSharp.Wrapper.dll</HintPath>
     </Reference>
     <Reference Include="SebbyLib">
       <HintPath>C:\Users\Shiro\Downloads\EnsoulSharp\System\SebbyLib.dll</HintPath>
@@ -87,6 +88,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="EnsoulSharp.SDK.dll" />
+    <Content Include="EnsoulSharp.Wrapper.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

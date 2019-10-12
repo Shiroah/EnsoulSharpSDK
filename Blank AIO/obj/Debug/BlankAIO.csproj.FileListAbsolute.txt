@@ -1,3 +1,0 @@
-C:\Users\Shiro\source\repos\Blank AIO\Blank AIO\obj\Debug\BlankAIO.csprojAssemblyReference.cache
-C:\Users\Shiro\source\repos\Blank AIO\Blank AIO\obj\Debug\Blank AIO.exe.config
-C:\Users\Shiro\source\repos\Blank AIO\Blank AIO\obj\Debug\BlankAIO.csproj.CoreCompileInputs.cache
