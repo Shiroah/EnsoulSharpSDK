@@ -36,8 +36,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EnsoulSharp.SDK">
-      <HintPath>C:\Users\Shiro\Downloads\EnsoulSharp\System\EnsoulSharp.SDK.dll</HintPath>
+    <Reference Include="EnsoulSharp.SDK, Version=1.0.0.20, Culture=neutral, PublicKeyToken=bcecb37b3b5656dd, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Downloads\EnsoulSharp\System\EnsoulSharp.SDK.dll</HintPath>
     </Reference>
     <Reference Include="EnsoulSharp.Wrapper, Version=1.0.0.19, Culture=neutral, PublicKeyToken=a47cf8ceb3524cd7, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
